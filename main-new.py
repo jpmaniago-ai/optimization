@@ -111,10 +111,16 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
 
     # Visualize the model
     st.subheader("Neural Network Architecture")
-    from tensorflow.python.keras.utils.vis_utils import model_to_dot
+    st.image('model_visualization.png')
 
-    dot = model_to_dot(model, show_shapes=True, show_layer_names=True, rankdir='TB', expand_nested=True)
-    st.graphviz_chart(dot.to_string())
+    # Visualize the model
+    st.subheader("Neural Network Architecture using ann_viz")
+
+    # Display the PDF using an iframe
+        with open("network.gv.pdf", "rb") as pdf_file:
+            pdf_bytes = pdf_file.read()
+            pdf_b64 = base64.b64encode(pdf_bytes).decode()
+            st.markdown(f'<iframe src="data:application/pdf;base64,{pdf_b64}" width="700" height="500"></iframe>', unsafe_allow_html=Tru
 
     # Make predictions
     predictions = model.predict(X_new_scaled)
