@@ -112,15 +112,22 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
     #st.image(plot_model_architecture(model))
 
     # Visualize the model
-    st.subheader("Neural Network Architecture using ann_viz")
+    #st.subheader("Neural Network Architecture using ann_viz")
     # Generate PDF using ann_viz
     #ann_viz(model, title="Neural Network Architecture", view=False, filename="ann_viz_network.pdf")
     
     # Convert PDF to Graphviz format
-    graphviz_data = ann_viz(model, title="Neural Network Architecture", view=True, format="pdf", filename="ann_viz_network")
+    #graphviz_data = ann_viz(model, title="Neural Network Architecture", view=True, format="pdf", filename="ann_viz_network")
     
     # Display the Graphviz data using st.graphviz_chart
-    st.graphviz_chart(graphviz_data)
+    #st.graphviz_chart(graphviz_data)
+
+    # Save the model architecture as an image
+    plot_model(model, to_file="model_architecture.png", show_shapes=True, show_layer_names=True)
+
+    # Display the model architecture image
+    st.subheader("Neural Network Architecture Visualization")
+    st.image("model_architecture.png")
 
     # Make predictions
     predictions = model.predict(X_new_scaled)
