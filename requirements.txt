@@ -4,6 +4,6 @@ altair
 matplotlib
 scikit-learn
 tensorflow
-pydot==1.2.3
+pydot
 graphviz
 ann_visualizer
