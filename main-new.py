@@ -108,13 +108,11 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
     interpret_training_history(history)
 
     # Visualize the model
-    #st.subheader("Neural Network Architecture")
-    # Save the model architecture as an image
-    plot_model(model, to_file="model_architecture.png", show_shapes=True, show_layer_names=True)
+    st.subheader("Neural Network Architecture")
+    from tensorflow.python.keras.utils.vis_utils import model_to_dot
 
-    # Display the model architecture using st.graphviz_chart
-    st.subheader("Neural Network Architecture Visualization")
-    st.graphviz_chart(model, use_container_width=True)
+    dot = model_to_dot(model, show_shapes=True, show_layer_names=True, rankdir='TB', expand_nested=True)
+    st.graphviz_chart(dot.to_string())
 
     # Make predictions
     predictions = model.predict(X_new_scaled)
