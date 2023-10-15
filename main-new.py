@@ -115,10 +115,10 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
     st.subheader("Neural Network Architecture using ann_viz")
 
     # Display the PDF using an iframe
-        with open("network.gv.pdf", "rb") as pdf_file:
-            pdf_bytes = pdf_file.read()
-            pdf_b64 = base64.b64encode(pdf_bytes).decode()
-            st.markdown(f'<iframe src="data:application/pdf;base64,{pdf_b64}" width="700" height="500"></iframe>', unsafe_allow_html=Tru
+    with open("network.gv.pdf", "rb") as pdf_file:
+        pdf_bytes = pdf_file.read()
+        pdf_b64 = base64.b64encode(pdf_bytes).decode()
+        st.markdown(f'<iframe src="data:application/pdf;base64,{pdf_b64}" width="700" height="500"></iframe>', unsafe_allow_html=True)
 
     # Make predictions
     predictions = model.predict(X_new_scaled)
