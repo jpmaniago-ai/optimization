@@ -4,5 +4,6 @@ altair
 matplotlib
 scikit-learn
 tensorflow
+pydot
 graphviz
 ann_visualizer
