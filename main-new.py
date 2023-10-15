@@ -32,8 +32,6 @@ import matplotlib.pyplot as plt
 #from ann_visualizer.visualize import ann_viz
 import os
 import base64
-from keras.layers import TimeDistributed
-
 
 # Function to train the selected regression model
 def train_regression_model(data, selected_model):
