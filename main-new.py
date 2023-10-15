@@ -28,7 +28,7 @@ from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 from keras import layers
 from keras.utils import plot_model
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from ann_visualizer.visualize import ann_viz
 import os
 import base64
@@ -108,27 +108,19 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
     interpret_training_history(history)
 
     # Visualize the model
-    st.subheader("Neural Network Architecture")
-    st.image(plot_model_architecture(model))
+    #st.subheader("Neural Network Architecture")
+    #st.image(plot_model_architecture(model))
 
     # Visualize the model
     st.subheader("Neural Network Architecture using ann_viz")
-    try:
-        
-        # Generate PDF using ann_viz
-        ann_viz(model, title="Neural Network Architecture", view=True, filename="network.gv")
-    except Exception as X:
-        st.write("<<Make sure you have pydot, graphviz installed and setup.>>")
-
-    try:
-        # Display the PDF using an iframe
-        with open("network.gv.pdf", "rb") as pdf_file:
-            pdf_bytes = pdf_file.read()
-            pdf_b64 = base64.b64encode(pdf_bytes).decode()
-            st.markdown(f'<iframe src="data:application/pdf;base64,{pdf_b64}" width="700" height="500"></iframe>', unsafe_allow_html=True)
-    except Exception as X:
-        st.write(X)
-        st.write("<<Make sure you have closed the Network.gv.pdf.>>")
+    # Generate PDF using ann_viz
+    ann_viz(model, title="Neural Network Architecture", view=False, filename="ann_viz_network.pdf")
+    
+    # Convert PDF to Graphviz format
+    graphviz_data = ann_viz(model, title="Neural Network Architecture", view=False, format="pdf", filename="ann_viz_network")
+    
+    # Display the Graphviz data using st.graphviz_chart
+    st.graphviz_chart(graphviz_data)
 
     # Make predictions
     predictions = model.predict(X_new_scaled)
@@ -140,9 +132,9 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
 
     return predictions
 
-def plot_model_architecture(model):
-    plot_model(model, to_file='model_visualization.png', show_shapes=True, show_layer_names=True)
-    return 'model_visualization.png'
+#def plot_model_architecture(model):
+#    plot_model(model, to_file='model_visualization.png', show_shapes=True, show_layer_names=True)
+#    return 'model_visualization.png'
 
 def plot_training_history(history):
     # Plot training & validation loss values
