@@ -6,3 +6,4 @@ tensorflow
 pydot==1.2.3
 graphviz
 ann_visualizer
+LinearRegression
