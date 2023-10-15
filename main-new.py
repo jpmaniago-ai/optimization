@@ -28,7 +28,7 @@ from sklearn.preprocessing import StandardScaler
 from tensorflow import keras
 from keras import layers
 from keras.utils import plot_model
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 from ann_visualizer.visualize import ann_viz
 import os
 import base64
