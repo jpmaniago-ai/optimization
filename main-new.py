@@ -117,7 +117,7 @@ def train_and_predict(X_train, y_train, X_test, y_test, X_new):
     ann_viz(model, title="Neural Network Architecture", view=False, filename="ann_viz_network.pdf")
     
     # Convert PDF to Graphviz format
-    graphviz_data = ann_viz(model, title="Neural Network Architecture", view=False, format="pdf", filename="ann_viz_network")
+    graphviz_data = ann_viz(model, title="Neural Network Architecture", view=True, format="pdf", filename="ann_viz_network")
     
     # Display the Graphviz data using st.graphviz_chart
     st.graphviz_chart(graphviz_data)
