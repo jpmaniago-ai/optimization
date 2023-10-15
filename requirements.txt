@@ -1,0 +1,8 @@
+streamlit
+scipy
+matplotlib
+scikit-learn
+tensorflow
+pydot==1.2.3
+graphviz
+ann_visualizer
